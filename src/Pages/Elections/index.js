@@ -19,7 +19,7 @@ import { useSelector } from "react-redux";
 import Web3 from "web3";
 import { RPC, daoABI, daoAddress } from "../../Constants/config";
 import { unixStamp } from "../../Utils/date";
-
+import { extractIpfsLink } from "../../Utils/pinata";
 const web3 = new Web3(new Web3.providers.HttpProvider(RPC));
 const daoContract = new web3.eth.Contract(daoABI, daoAddress);
 
@@ -340,7 +340,7 @@ class Elections extends React.Component {
                 >
                   {element.source ? (
                     <Box
-                      src={element.source}
+                      src={extractIpfsLink(element.source)}
                       component="img"
                       sx={{ width: "100%" }}
                     />

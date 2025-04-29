@@ -22,7 +22,7 @@ import {
   daoABI,
   daoAddress,
 } from "../../Constants/config";
-
+import { extractIpfsLink } from "../../Utils/pinata";
 const web3 = new Web3(new Web3.providers.HttpProvider(RPC));
 const daoContract = new web3.eth.Contract(daoABI, daoAddress);
 const vrtContract = new web3.eth.Contract(vrtABI, vrtAddress);
@@ -184,7 +184,7 @@ class Vote extends React.Component {
                             <Box
                               src={
                                 element.source
-                                  ? element.source
+                                  ? extractIpfsLink(element.source)
                                   : "/images/election.png"
                               }
                               component="img"

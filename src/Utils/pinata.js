@@ -33,3 +33,8 @@ export const pinFileToIPFS = async (file) => {
       };
     });
 };
+export const extractIpfsLink = (sourceUrl) => {
+  if (!sourceUrl) return "";
+  const hash = sourceUrl.split("/").pop();
+  return `https://ipfs.io/ipfs/${hash}`;
+};
